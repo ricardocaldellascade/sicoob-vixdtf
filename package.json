@@ -1,0 +1,14 @@
+{
+  "name": "sicoob-vixdtf",
+  "version": "1.0.0",
+  "description": "Ponte mTLS entre o Supabase da Vix DTF e a API de Cobranca Bancaria do Sicoob",
+  "private": true,
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
