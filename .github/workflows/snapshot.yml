@@ -3,24 +3,52 @@ on:
   push:
     branches: [snap-laser]
 permissions:
-  contents: write
+  contents: read
 jobs:
-  grab:
+  testar:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: snap-laser
-      - name: baixar pedidos
+      - name: teste do checkout do chaveiro
+        env:
+          SUPA: https://pjyknhefixeeslqqlhfx.supabase.co
+          KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqeWtuaGVmaXhlZXNscXFsaGZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNDk4MTUsImV4cCI6MjA5NjYyNTgxNX0.ICdlk2-0Z251h2ivFYktwqc5saH31eBupLiSZyDwuOQ
         run: |
-          B=https://pedidos-vixdtf.netlify.app
-          mkdir -p pedidos && cd pedidos
-          curl -sSL "$B/" -o index.html
-          wc -c index.html
-      - name: commitar
-        run: |
-          git config user.name snapshot
-          git config user.email snapshot@users.noreply.github.com
-          git add -A
-          git commit -m "snapshot pedidos" || echo "sem mudanca"
-          git push origin snap-laser
+          set -u
+          P="chaveiro/teste/$(date +%s).png"
+          printf 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==' | base64 -d > t.png
+          echo "== upload =="
+          curl -s -o /dev/null -w "storage: %{http_code}\n" -X POST "$SUPA/storage/v1/object/arquivos-pedidos/$P" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" -H "Content-Type: image/png" --data-binary @t.png
+          URL="$SUPA/storage/v1/object/public/arquivos-pedidos/$P"
+
+          echo "== 1) validacao: sem arquivo =="
+          curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            -d '{"acao":"criar","produto":"fotogravacao","nome":"Teste","telefone":"27997357891","arquivos":[]}' ; echo
+
+          echo "== 2) fotogravacao 2un foto+frase (deveria dar valor_cheio 139.80) =="
+          R=$(curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            -d "{\"acao\":\"criar\",\"produto\":\"fotogravacao\",\"plano\":\"foto_frase\",\"forma\":\"ret\",\"quantidade\":2,\"frase\":\"Teste Vix\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}")
+          echo "$R" | head -c 900; echo
+          NSU=$(echo "$R" | sed -n 's/.*"order_nsu":"\([^"]*\)".*/\1/p')
+          echo "order_nsu=$NSU"
+
+          echo "== 3) confirmar (deveria vir pago:false) =="
+          curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            -d "{\"acao\":\"confirmar\",\"order_nsu\":\"$NSU\"}" ; echo
+
+          echo "== 4) atacado 21un frente (valor_cheio esperado 315.00) =="
+          curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            -d "{\"acao\":\"criar\",\"produto\":\"atacado\",\"gravacao\":\"frente\",\"forma\":\"red\",\"quantidade\":21,\"empresa\":\"Teste Ltda\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 600 ; echo
+
+          echo "== 5) atacado 20un frente+verso (protecao de faixa: esperado 375.90) =="
+          curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            -d "{\"acao\":\"criar\",\"produto\":\"atacado\",\"gravacao\":\"frente_verso\",\"forma\":\"ret\",\"quantidade\":20,\"frase\":\"@vix.dtf\",\"empresa\":\"Teste Ltda\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 600 ; echo
+
+          echo "== 6) site no ar =="
+          curl -s -o /dev/null -w "index: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/
+          curl -s -o /dev/null -w "atacado: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/atacado
