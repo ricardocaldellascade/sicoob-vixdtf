@@ -21,6 +21,20 @@ jobs:
             -H "apikey: $KEY" -H "Authorization: Bearer $KEY" -H "Content-Type: image/png" --data-binary @t.png
           URL="$SUPA/storage/v1/object/public/arquivos-pedidos/$P"
 
+          echo "== 0a) preflight do navegador (OPTIONS) =="
+          curl -s -o /dev/null -w "options: %{http_code}\n" -X OPTIONS "$SUPA/functions/v1/pedido-chaveiro" \
+            -H "Origin: https://chaveiro-vixdtf.netlify.app" \
+            -H "Access-Control-Request-Method: POST" \
+            -H "Access-Control-Request-Headers: content-type,apikey,authorization"
+          echo "-- cabecalhos do preflight --"
+          curl -s -D - -o /dev/null -X OPTIONS "$SUPA/functions/v1/pedido-chaveiro" \
+            -H "Origin: https://chaveiro-vixdtf.netlify.app" -H "Access-Control-Request-Method: POST" \
+            -H "Access-Control-Request-Headers: content-type,apikey,authorization" | grep -i "access-control\|^HTTP" || true
+
+          echo "== 0b) POST sem chave (so pra saber se o verify_jwt barra) =="
+          curl -s -o /dev/null -w "sem chave: %{http_code}\n" -X POST "$SUPA/functions/v1/pedido-chaveiro" \
+            -H "content-type: application/json" -d '{"acao":"ping"}'
+
           echo "== 1) validacao: sem arquivo =="
           curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
             -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
