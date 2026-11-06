@@ -43,7 +43,7 @@ jobs:
           echo "== 2) fotogravacao 2un foto+frase (deveria dar valor_cheio 139.80) =="
           R=$(curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
             -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
-            -d "{\"acao\":\"criar\",\"produto\":\"fotogravacao\",\"plano\":\"foto_frase\",\"forma\":\"ret\",\"quantidade\":2,\"frase\":\"Teste Vix\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}")
+            -d "{\"acao\":\"criar\",\"produto\":\"fotogravacao\",\"plano\":\"foto_frase\",\"quantidade\":2,\"frase\":\"Teste Vix\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}")
           echo "$R" | head -c 900; echo
           NSU=$(echo "$R" | sed -n 's/.*"order_nsu":"\([^"]*\)".*/\1/p')
           echo "order_nsu=$NSU"
@@ -53,15 +53,15 @@ jobs:
             -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
             -d "{\"acao\":\"confirmar\",\"order_nsu\":\"$NSU\"}" ; echo
 
-          echo "== 4) atacado 21un frente (valor_cheio esperado 315.00) =="
+          echo "== 4) atacado 21un frente (esperado 315.00) =="
           curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
             -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
-            -d "{\"acao\":\"criar\",\"produto\":\"atacado\",\"gravacao\":\"frente\",\"forma\":\"red\",\"quantidade\":21,\"empresa\":\"Teste Ltda\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 600 ; echo
+            -d "{\"acao\":\"criar\",\"produto\":\"atacado\",\"gravacao\":\"frente\",\"quantidade\":21,\"empresa\":\"Teste Ltda\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 600 ; echo
 
           echo "== 5) atacado 20un frente+verso (protecao de faixa: esperado 375.90) =="
           curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
             -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
-            -d "{\"acao\":\"criar\",\"produto\":\"atacado\",\"gravacao\":\"frente_verso\",\"forma\":\"ret\",\"quantidade\":20,\"frase\":\"@vix.dtf\",\"empresa\":\"Teste Ltda\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 600 ; echo
+            -d "{\"acao\":\"criar\",\"produto\":\"atacado\",\"gravacao\":\"frente_verso\",\"quantidade\":20,\"frase\":\"@vix.dtf\",\"empresa\":\"Teste Ltda\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 600 ; echo
 
           echo "== 6) site no ar =="
           curl -s -o /dev/null -w "index: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/
