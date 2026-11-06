@@ -1,0 +1,32 @@
+name: snapshot
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  grab:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: snap-laser
+      - name: baixar site
+        run: |
+          B=https://laser-vixdtf.netlify.app
+          mkdir -p site && cd site
+          curl -sSL "$B/" -o index.html
+          wc -c index.html
+          { grep -oE '(src|href|poster|content)="[^"]+"' index.html | sed -E 's/.*="//;s/"$//';
+            grep -oE "url\((['\"])?[^)'\"]+" index.html | sed -E "s/url\((['\"])?//"; } \
+            | sed 's#^\./##' | grep -E '^(assets|fontes|trabalhos|videos)/' | sort -u > /tmp/list.txt
+          cat /tmp/list.txt
+          while read -r p; do mkdir -p "$(dirname "$p")"; curl -sfSL "$B/$p" -o "$p" || echo "FALHOU $p"; done < /tmp/list.txt
+          for f in robots.txt sitemap.xml netlify.toml _headers; do curl -sfSL "$B/$f" -o "$f" || rm -f "$f"; done
+          find . -type f | sort
+          du -sh .
+      - name: commitar
+        run: |
+          git config user.name snapshot
+          git config user.email snapshot@users.noreply.github.com
+          git add -A
+          git commit -m "snapshot do site laser publicado" || echo "sem mudanca"
+          git push origin snap-laser
