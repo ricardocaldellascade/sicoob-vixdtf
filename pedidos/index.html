@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="vx-versao" content="pedido-online v2026.10.15b — logo + pedidos-vixdtf">
+<title>Pedido online · Vix DTF</title>
+<meta name="description" content="Envie seu arquivo PNG, veja a metragem e o valor na hora e pague online. Vix DTF.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta property="og:image" content="https://pedidos-vixdtf.netlify.app/logo-vixdtf.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+/* Meta Pixel: desligado. Para ligar, coloque o ID do novo pixel abaixo. */
+var VX_PIXEL_ID = '1107689732230438';
+if (VX_PIXEL_ID) {
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init',VX_PIXEL_ID);fbq('track','PageView');
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NFVBZZE8W1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NFVBZZE8W1');</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+:root{--bg:#0D0B0A;--surface:#171310;--surface2:#211b17;--border:#2f2620;--border2:#3d322a;--text:#F5EFEA;--text2:#C9BEB5;--muted:#8f847b;--accent:#F47C20;--ok:#3DDC97;--warn:#FFB84D;--err:#FF6B6B}
+:root[data-theme="light"]{--bg:#FBF7F3;--surface:#ffffff;--surface2:#f4ede6;--border:#eadfd4;--border2:#dccdbf;--text:#1d1612;--text2:#5b4e45;--muted:#8a7d73;--accent:#E2680F;--ok:#14935d;--warn:#b36b00;--err:#c93434}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#FBF7F3;--surface:#ffffff;--surface2:#f4ede6;--border:#eadfd4;--border2:#dccdbf;--text:#1d1612;--text2:#5b4e45;--muted:#8a7d73;--accent:#E2680F;--ok:#14935d;--warn:#b36b00;--err:#c93434}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:22px 16px 120px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.logo{display:block;line-height:0}
+.logo img{height:64px;width:auto;filter:drop-shadow(0 4px 14px rgba(0,0,0,.25))}
+.zap{color:var(--text2);font-size:13px;text-decoration:none;border:1px solid var(--border2);padding:8px 12px;border-radius:999px}
+.zap:hover{border-color:var(--accent);color:var(--text)}
+h1{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,6vw,36px);line-height:1.05;margin:6px 0 8px;letter-spacing:-.02em}
+.sub{color:var(--text2);font-size:15px;line-height:1.5;margin:0 0 18px}
+.png-only{display:flex;gap:12px;align-items:flex-start;background:color-mix(in srgb,var(--accent) 12%,transparent);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:14px;padding:12px 14px;margin-bottom:18px;font-size:14px;line-height:1.45}
+.png-only b{font-family:'Archivo',sans-serif;font-weight:900;font-size:15px;color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px;margin-bottom:14px}
+.card h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+.n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#0D0B0A;font-size:13px;font-weight:900;flex:none}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg button{all:unset;box-sizing:border-box;cursor:pointer;border:1.5px solid var(--border2);background:var(--surface2);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:3px}
+.seg button b{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px}
+.seg button small{color:var(--text2);font-size:12.5px}
+.seg button.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--surface2))}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.drop{position:relative;border:2px dashed var(--border2);border-radius:16px;padding:26px 16px;text-align:center;cursor:pointer;transition:.15s;background:var(--surface2)}
+.drop.over,.drop:hover{border-color:var(--accent)}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.drop b{display:block;font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;margin-bottom:4px}
+.drop span{color:var(--text2);font-size:13.5px}
+.files{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.f{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;border:1px solid var(--border);border-radius:14px;padding:10px;background:var(--surface2)}
+.f .th{width:56px;height:56px;border-radius:10px;background:repeating-conic-gradient(#ffffff14 0 25%,transparent 0 50%) 0 0/12px 12px;display:grid;place-items:center;overflow:hidden}
+.f .th img{max-width:100%;max-height:100%}
+.f .nm{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.f .md{font-size:13px;color:var(--text2);margin-top:2px}
+.f .st{font-size:12.5px;margin-top:3px}
+.f .st.ok{color:var(--ok)}.f .st.warn{color:var(--warn)}.f .st.err{color:var(--err)}
+.bar{height:5px;border-radius:9px;background:var(--border);overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+.f .rt{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.qtd{display:flex;align-items:center;border:1px solid var(--border2);border-radius:10px;overflow:hidden}
+.qtd button{all:unset;cursor:pointer;width:30px;height:30px;display:grid;place-items:center;font-weight:700}
+.qtd span{min-width:26px;text-align:center;font-weight:700;font-size:14px}
+.rm{all:unset;cursor:pointer;color:var(--muted);font-size:12.5px}
+.rm:hover{color:var(--err)}
+.val{font-weight:700;font-size:14px}
+label.fld{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--text2);font-weight:500}
+input.in,textarea.in{width:100%;height:46px;border-radius:12px;border:1px solid var(--border2);background:var(--surface2);color:var(--text);padding:0 12px;font:500 15px 'Inter',sans-serif;outline:none}
+textarea.in{height:76px;padding:10px 12px;resize:vertical}
+input.in:focus,textarea.in:focus{border-color:var(--accent)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:2fr 1fr;gap:10px}
+.stack{display:flex;flex-direction:column;gap:10px}
+.resumo{display:flex;flex-direction:column;gap:6px;font-size:14.5px}
+.resumo .l{display:flex;justify-content:space-between;gap:10px;color:var(--text2)}
+.resumo .l b{color:var(--text);font-weight:600;white-space:nowrap}
+.resumo .tot{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--border);padding-top:10px;margin-top:4px}
+.resumo .tot span{font-weight:600}
+.resumo .tot b{font-family:'Archivo',sans-serif;font-weight:900;font-size:28px;color:var(--accent)}
+.nota{font-size:12.5px;color:var(--muted);line-height:1.45}
+.alerta{border-radius:12px;padding:10px 12px;font-size:13.5px;line-height:1.45;background:color-mix(in srgb,var(--err) 12%,transparent);border:1px solid color-mix(in srgb,var(--err) 40%,transparent);color:var(--text)}
+.alerta.w{background:color-mix(in srgb,var(--warn) 12%,transparent);border-color:color-mix(in srgb,var(--warn) 40%,transparent)}
+.pagar{position:fixed;left:0;right:0;bottom:0;background:linear-gradient(transparent,var(--bg) 30%);padding:22px 16px 16px}
+.pagar .in2{max-width:760px;margin:0 auto;display:flex;gap:12px;align-items:center}
+.pagar .tt{flex:1;min-width:0}
+.pagar .tt small{display:block;color:var(--text2);font-size:12px}
+.pagar .tt b{font-family:'Archivo',sans-serif;font-weight:900;font-size:22px}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;background:var(--accent);color:#0D0B0A;font-family:'Archivo',sans-serif;font-weight:900;font-size:16px;padding:0 22px;height:54px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 28px color-mix(in srgb,var(--accent) 40%,transparent)}
+.btn:disabled,.btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed;box-shadow:none}
+.btn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.btn.sec{background:var(--surface2);color:var(--text);border:1px solid var(--border2);box-shadow:none;font-size:14px;height:44px}
+.msg{font-size:13.5px;color:var(--err);min-height:0}
+.final{text-align:center;padding:30px 18px}
+.final .ic{font-size:46px}
+.final h1{margin:8px 0}
+.hidden{display:none!important}
+.selos{display:flex;flex-wrap:wrap;gap:6px 14px;margin:-6px 0 16px;font-size:13px;color:var(--text2)}
+.selos span::before{content:'✓ ';color:var(--ok);font-weight:900}
+.st a{color:var(--accent);font-weight:600}
+.pix{text-align:center}
+.pix .qr{display:inline-block;background:#fff;padding:12px;border-radius:16px;margin:6px 0 12px;line-height:0}
+.pix .qr svg{width:220px;height:220px}
+.pix .cc{display:flex;gap:8px;margin:0 0 12px}
+.pix .cc input{flex:1;min-width:0;height:46px;border-radius:12px;border:1px solid var(--border2);background:var(--surface2);color:var(--text2);padding:0 12px;font:500 13px 'Inter',sans-serif}
+.pix .valor{font-family:'Archivo',sans-serif;font-weight:900;font-size:32px;color:var(--accent);margin:2px 0 4px}
+.pix .aguarda{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13.5px;color:var(--text2);margin:6px 0 14px}
+.pix .aguarda i{width:9px;height:9px;border-radius:50%;background:var(--warn);animation:pul 1.2s infinite}
+@keyframes pul{50%{opacity:.25}}
+.ou{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12.5px;margin:6px 0 10px}
+.ou::before,.ou::after{content:'';flex:1;height:1px;background:var(--border)}
+.rodape{margin-top:26px;padding-top:16px;border-top:1px solid var(--border);font-size:12.5px;color:var(--muted);line-height:1.6}
+.rodape a{color:var(--text2)}
+@media (max-width:560px){.g2,.g3{grid-template-columns:1fr}.f{grid-template-columns:48px minmax(0,1fr)}.f .th{width:48px;height:48px}.f .rt{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:center}}
+.png-only .fmt{font-family:inherit;font-size:inherit;color:var(--text);font-weight:700}
+.acoes-manual{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.btn.mini{height:40px;font-size:13.5px;padding:0 14px;box-shadow:none}
+.zapbtn{background:#25D366;color:#06210f;border:0}
+.btn.sec.zapbtn{background:#25D366;color:#06210f;border:0}
+.ok-manual{border-radius:12px;padding:14px;background:color-mix(in srgb,var(--ok) 14%,transparent);border:1px solid color-mix(in srgb,var(--ok) 45%,transparent);font-size:14px;line-height:1.5}
+.wa-flut{position:fixed;right:16px;bottom:96px;width:54px;height:54px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.35);z-index:6;transition:transform .2s}
+.wa-flut:hover{transform:scale(1.07)}
+.wa-flut:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.voltar{display:inline-flex;align-items:center;gap:4px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:600;padding:8px 12px 8px 6px;margin:-4px 0 6px -6px;border-radius:10px}
+.voltar:hover{color:var(--text);background:var(--surface2)}
+.voltar:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:center}
+header .voltar{grid-column:1;justify-self:start;margin:0}
+header .logo{grid-column:2}
+header .zap{grid-column:3;justify-self:end}
+#tela-pedido>h1,#tela-pedido>.sub{text-align:center}
+#tela-pedido>.sub{max-width:620px;margin-left:auto;margin-right:auto}
+#tela-pedido>.selos{justify-content:center}
+@media (max-width:520px){header .zap{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><a class="voltar" id="voltar" href="/dtf/"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Voltar</a><a class="logo" href="/" aria-label="Vix DTF"><img src="/logo-vixdtf.png" alt="Vix DTF" width="92" height="71"></a><a class="zap" href="https://wa.me/5527992830118" target="_blank" rel="noopener">Falar no WhatsApp</a></header>
+
+  <main id="tela-pedido">
+    <h1>Faça seu pedido online</h1>
+    <p class="sub">Envie seu arquivo, veja a metragem e o valor na hora e pague com Pix ou cartão. Assim que o pagamento cair, seu pedido entra na fila de produção.</p>
+    <div class="selos"><span>Conferimos o arquivo antes de imprimir</span><span>Produção em até 24h úteis</span><span>Envio para todo o Brasil</span><span>Loja física em Vitória/ES</span></div>
+
+    <div data-vxr-banner></div>
+    <div class="png-only" role="note">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--accent);flex:none;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div><b>O valor automático é só para arquivo PNG.</b><br>Seu arquivo está em <b class="fmt">CDR, PDF, Photoshop (PSD), AI, JPG</b> ou é um <b class="fmt">link do Canva</b>? Nossa equipe faz o orçamento para você no WhatsApp.
+        <div class="acoes-manual"><button type="button" class="btn sec mini" id="abrirManual">Enviar arquivo para a equipe</button><a class="btn mini zapbtn" data-zapmsg="Oi! Tenho um arquivo em outro formato (não é PNG) e preciso de um orçamento de DTF." href="https://wa.me/5527992830118" target="_blank" rel="noopener">Chamar no WhatsApp</a></div>
+      </div>
+    </div>
+
+    <section class="card hidden" id="cardManual" aria-labelledby="t-manual">
+      <h2 id="t-manual"><span class="n" style="background:#25D366">!</span>Orçamento com a equipe</h2>
+      <p class="nota" style="margin:-4px 0 12px;font-size:13.5px;color:var(--text2)">Envie o arquivo (CDR, PDF, PSD, AI, JPG…) ou cole o link do Canva/Drive. A equipe recebe na hora e te responde no WhatsApp com o valor.</p>
+      <div class="stack">
+        <div class="drop" id="dropManual"><input type="file" id="arqManual" multiple aria-label="Escolher arquivos para orçamento"><b>Toque para escolher o arquivo</b><span>Qualquer formato · até 10 arquivos</span></div>
+        <div class="files" id="listaManual"></div>
+        <label class="fld">Ou cole o link (Canva, Google Drive…)<input class="in" id="linkManual" inputmode="url" placeholder="https://"></label>
+        <div class="g2">
+          <label class="fld">Seu nome<input class="in" id="nomeManual" autocomplete="name" placeholder="Seu nome ou da empresa"></label>
+          <label class="fld">WhatsApp com DDD<input class="in" id="telManual" inputmode="tel" autocomplete="tel" placeholder="(27) 99999-9999"></label>
+        </div>
+        <label class="fld">O que você precisa? (opcional)<input class="in" id="obsManual" maxlength="300" placeholder="Ex.: 20 camisetas, tamanho 28 cm"></label>
+        <div class="msg" id="msgManual" role="alert"></div>
+        <div class="acoes-manual"><button type="button" class="btn" id="enviarManual">Enviar para orçamento</button><a class="btn sec zapbtn" data-zapmsg="Oi! Quero um orçamento de DTF com um arquivo em outro formato." href="https://wa.me/5527992830118" target="_blank" rel="noopener">Chamar no WhatsApp</a></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">1</span>Tipo de impressão</h2>
+      <div class="seg" id="tipo" role="radiogroup" aria-label="Tipo de impressão">
+        <button type="button" role="radio" data-t="textil" class="on" aria-checked="true"><b>DTF Têxtil</b><small>Largura máx. 58 cm · para tecido</small></button>
+        <button type="button" role="radio" data-t="uv" aria-checked="false"><b>DTF UV</b><small>Largura máx. 28 cm · para objetos</small></button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">2</span>Seus arquivos (somente PNG)</h2>
+      <div class="drop" id="drop"><input type="file" id="arq" multiple aria-label="Escolher arquivos PNG"><b>Toque para escolher os arquivos PNG</b><span>ou arraste para cá · outro formato vai para a equipe orçar</span></div>
+      <div class="files" id="lista"></div>
+      <p class="nota" id="notaMedida" style="margin:10px 0 0">A medida é lida do próprio arquivo (pixels + DPI). Confira se está no tamanho que você quer imprimir.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">3</span>Seus dados</h2>
+      <div class="stack">
+        <div class="g2">
+          <label class="fld">Nome completo<input class="in" id="nome" autocomplete="name" placeholder="Seu nome ou da empresa"></label>
+          <label class="fld">WhatsApp com DDD<input class="in" id="tel" inputmode="tel" autocomplete="tel" placeholder="(27) 99999-9999"></label>
+        </div>
+        <div class="seg" id="entrega" role="radiogroup" aria-label="Entrega">
+          <button type="button" role="radio" data-e="retirada" class="on" aria-checked="true"><b>Retirar na loja</b><small>Av. Pres. Costa e Silva, 290 · Vitória</small></button>
+          <button type="button" role="radio" data-e="envio" aria-checked="false"><b>Enviar</b><small>Frete calculado pelo CEP</small></button>
+        </div>
+        <div id="boxEnvio" class="stack hidden">
+          <div class="g3"><label class="fld">CEP<input class="in" id="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000"></label><label class="fld">Número<input class="in" id="numero" placeholder="Nº"></label></div>
+          <label class="fld">Endereço<input class="in" id="rua" autocomplete="address-line1" placeholder="Rua / avenida"></label>
+          <div class="g2"><label class="fld">Bairro<input class="in" id="bairro"></label><label class="fld">Complemento<input class="in" id="compl" placeholder="Opcional"></label></div>
+          <div class="g3"><label class="fld">Cidade<input class="in" id="cidade"></label><label class="fld">UF<input class="in" id="uf" maxlength="2"></label></div>
+          <div class="nota" id="freteTxt"></div>
+        </div>
+        <label class="fld">Observação (opcional)<textarea class="in" id="obs" maxlength="500" placeholder="Algo que a produção precisa saber?"></textarea></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">4</span>Forma de pagamento</h2>
+      <div class="seg" id="pagto" role="radiogroup" aria-label="Forma de pagamento">
+        <button type="button" role="radio" data-p="pix" class="on" aria-checked="true"><b>Pix</b><small>QR code na tela · confirmação automática</small></button>
+        <button type="button" role="radio" data-p="cartao" aria-checked="false"><b>Cartão de crédito</b><small>Pague aqui mesmo, sem sair do site</small></button>
+      </div>
+      <div id="boxCartao" class="stack hidden" style="margin-top:14px">
+        <label class="fld">Número do cartão<input class="in" id="ccNum" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="23"></label>
+        <label class="fld">Nome impresso no cartão<input class="in" id="ccNome" autocomplete="cc-name" placeholder="Como está no cartão"></label>
+        <div class="g2"><label class="fld">Validade<input class="in" id="ccVal" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AA" maxlength="5"></label><label class="fld">CVV<input class="in" id="ccCvv" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="4"></label></div>
+        <div class="g2"><label class="fld">CPF ou CNPJ do titular<input class="in" id="ccDoc" inputmode="numeric" placeholder="000.000.000-00"></label><label class="fld">E-mail<input class="in" id="ccEmail" type="email" autocomplete="email" placeholder="voce@email.com"></label></div>
+        <div class="g3"><label class="fld">CEP do titular<input class="in" id="ccCep" inputmode="numeric" placeholder="00000-000"></label><label class="fld">Número<input class="in" id="ccNumEnd" placeholder="Nº"></label></div>
+        <p class="nota" style="margin:0">🔒 Pagamento processado pelo Asaas, instituição autorizada pelo Banco Central. Os dados do cartão não ficam guardados com a Vix DTF.</p>
+        <div class="alerta hidden" id="ccErro" role="alert"></div>
+      </div>
+    </section>
+
+    <section class="card" id="cardResumo">
+      <h2><span class="n">5</span>Resumo</h2>
+      <div class="resumo" id="resumo"><div class="nota">Envie pelo menos um arquivo PNG para ver o valor.</div></div>
+    </section>
+    <div class="msg" id="msg" role="alert"></div>
+  </main>
+
+  <main id="tela-pix" class="hidden">
+    <div class="card pix">
+      <h1 style="font-size:26px">Falta só o pagamento</h1>
+      <p class="sub" style="margin-bottom:8px">Pague com Pix pelo QR code ou pelo copia e cola. A confirmação é automática.</p>
+      <div class="valor" id="pixValor"></div>
+      <div class="qr" id="pixQr" aria-label="QR code do Pix"></div>
+      <div class="cc"><input id="pixCodigo" readonly aria-label="Código Pix copia e cola"><button type="button" class="btn sec" id="pixCopiar">Copiar</button></div>
+      <div class="aguarda" id="pixAguarda"><i aria-hidden="true"></i><span>Aguardando o pagamento…</span></div>
+      <div class="ou">ou</div>
+      <a class="btn sec" id="pixCartao" href="#">Prefere pagar com cartão?</a>
+      <p class="nota" style="margin-top:14px">O Pix é cobrado em nome de Laserfy Ltda (Vix DTF). Também mandamos o Pix copia e cola no seu WhatsApp.</p>
+      <p class="nota" id="pixPedido"></p>
+    </div>
+  </main>
+
+  <main id="tela-final" class="hidden"><div class="card final" id="final"></div></main>
+
+  <div class="rodape"><b>Vix DTF</b> · Laserfy Ltda · CNPJ 32.483.699/0001-84<br>Av. Presidente Costa e Silva, 290 · Morada de Camburi · Vitória/ES<br><a href="https://garantia-vixdtf.netlify.app/" target="_blank" rel="noopener">Garantia</a> · <a href="https://wa.me/5527992830118" target="_blank" rel="noopener">WhatsApp (27) 99283-0118</a></div>
+</div>
+
+<a class="wa-flut zapbtn" data-zapmsg="Oi! Estou no site da Vix DTF e preciso de ajuda com meu pedido." href="https://wa.me/5527992830118" target="_blank" rel="noopener" aria-label="Falar com o atendimento no WhatsApp"><svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16.04 3C9.4 3 4 8.38 4 15c0 2.12.56 4.19 1.62 6.01L4 29l8.2-1.58A12.06 12.06 0 0 0 16.04 27C22.68 27 28 21.62 28 15S22.68 3 16.04 3zm0 21.8c-1.82 0-3.6-.49-5.16-1.42l-.37-.22-4.87.94.97-4.74-.24-.39A9.73 9.73 0 0 1 6.26 15c0-5.4 4.39-9.8 9.78-9.8 5.4 0 9.72 4.4 9.72 9.8s-4.33 9.8-9.72 9.8zm5.36-7.33c-.29-.15-1.74-.86-2.01-.96-.27-.1-.47-.15-.67.15-.2.29-.77.96-.94 1.16-.17.2-.35.22-.64.07-.29-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.03-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.67-1.6-.91-2.2-.24-.57-.48-.5-.67-.5h-.57c-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.44s1.05 2.83 1.19 3.03c.15.2 2.06 3.14 4.99 4.4.7.3 1.24.48 1.66.61.7.22 1.34.19 1.84.12.56-.08 1.74-.71 1.98-1.4.24-.69.24-1.28.17-1.4-.07-.12-.27-.2-.56-.34z"/></svg></a>
+<div class="pagar" id="barra">
+  <div class="in2"><div class="tt"><small id="barSub">Total</small><b id="barTot">R$ 0,00</b></div><button type="button" class="btn" id="btnPagar" disabled>Pagar com Pix</button></div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var SUPA = 'https://pjyknhefixeeslqqlhfx.supabase.co';
+  var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqeWtuaGVmaXhlZXNscXFsaGZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNDk4MTUsImV4cCI6MjA5NjYyNTgxNX0.ICdlk2-0Z251h2ivFYktwqc5saH31eBupLiSZyDwuOQ';
+  var FN = SUPA + '/functions/v1/pedido-online';
+  var BUCKET = 'arquivos-pedidos';
+  var MAXL = { textil: 58, uv: 28 }, NOME = { textil: 'DTF Têxtil', uv: 'DTF UV' };
+  var S = { pagto: 'pix', tipo: 'textil', entrega: 'retirada', arqs: [], cot: null, frete: null, freteCep: '', seq: 0 };
+  var $ = function(id){ return document.getElementById(id); };
+  var brl = function(v){ return 'R$ ' + (Number(v) || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+  var cm = function(v){ return String((Math.round(v * 10) / 10)).replace('.', ','); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); };
+  var dig = function(s){ return String(s || '').replace(/\D/g, ''); };
+  function post(body){ return fetch(FN, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) }).then(function(r){ return r.json(); }); }
+
+  /* ── medição (pixel Meta + GA4) e origem do anúncio ── */
+  function evento(nome, dados, extra){
+    try { if (window.fbq) fbq('track', nome, dados || {}, extra || {}); } catch (e) {}
+    try { if (window.gtag) gtag('event', ({ AddToCart: 'add_to_cart', InitiateCheckout: 'begin_checkout', Purchase: 'purchase', AddPaymentInfo: 'add_payment_info' })[nome] || nome, dados || {}); } catch (e) {}
+  }
+  (function(){
+    var q = new URLSearchParams(location.search), o = {};
+    try { o = JSON.parse(localStorage.getItem('vx_origem') || '{}') || {}; } catch (e) {}
+    var nova = false;
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid', 'r'].forEach(function(k){ if (q.get(k)) { o[k] = q.get(k); nova = true; } });
+    if (nova) { o.em = new Date().toISOString(); try { localStorage.setItem('vx_origem', JSON.stringify(o)); } catch (e) {} }
+  })();
+
+  /* ── pagamento dentro da página: Pix Sicoob (QR + copia e cola) ou cartão ── */
+  function mostrarPagamento(j){
+    $('tela-pedido').classList.add('hidden'); $('barra').classList.add('hidden'); $('tela-pix').classList.remove('hidden');
+    window.scrollTo(0, 0);
+    var nsu = j.order_nsu, txid = null, parar = false, tent = 0;
+    $('pixValor').textContent = brl(j.total);
+    $('pixPedido').textContent = 'Pedido ' + nsu;
+    $('pixCartao').addEventListener('click', function(e){
+      e.preventDefault(); S.nsuCartao = nsu;
+      evento('AddPaymentInfo', { payment_type: 'cartao' });
+      $('tela-pix').classList.add('hidden'); $('tela-pedido').classList.remove('hidden'); $('barra').classList.remove('hidden');
+      $('pagto').querySelector('[data-p="cartao"]').click();
+      $('btnPagar').disabled = false; $('btnPagar').textContent = rotuloPagar();
+      $('boxCartao').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    $('pixQr').innerHTML = '<span style="color:#555;font-size:13px;line-height:1.4;display:block;width:220px;padding:90px 0">Gerando o Pix…</span>';
+    (j.brcode ? Promise.resolve({ ok: true, txid: j.txid, brcode: j.brcode }) : post({ acao: 'pix', order_nsu: nsu })).then(function(p){
+      if (p && p.pago) { pago(); return; }
+      if (!p || !p.ok || !p.brcode) {
+        $('pixQr').classList.add('hidden'); $('pixCodigo').parentNode.classList.add('hidden');
+        $('pixAguarda').innerHTML = '<span>' + esc((p && p.mensagem) || 'Não consegui gerar o Pix agora.') + ' Use o cartão abaixo.</span>';
+        return;
+      }
+      txid = p.txid;
+      $('pixCodigo').value = p.brcode;
+      try { var qr = qrcode(0, 'M'); qr.addData(p.brcode); qr.make(); $('pixQr').innerHTML = qr.createSvgTag({ cellSize: 5, margin: 0, scalable: true }); }
+      catch (e) { $('pixQr').classList.add('hidden'); }
+      evento('AddPaymentInfo', { payment_type: 'pix' });
+    }).catch(function(){ $('pixAguarda').innerHTML = '<span>Sem conexão para gerar o Pix. Use o cartão ou tente de novo.</span>'; });
+    $('pixCopiar').addEventListener('click', function(){
+      var i = $('pixCodigo'), b = this; i.select();
+      (navigator.clipboard ? navigator.clipboard.writeText(i.value) : Promise.reject()).catch(function(){ document.execCommand('copy'); })
+        .then(function(){ b.textContent = 'Copiado ✓'; setTimeout(function(){ b.textContent = 'Copiar'; }, 2500); });
+    });
+    function pago(){
+      parar = true;
+      evento('Purchase', { value: j.total, currency: 'BRL' }, { eventID: 'orc_' + nsu });
+      $('tela-pix').classList.add('hidden'); $('tela-final').classList.remove('hidden');
+      $('final').innerHTML = '<div class="ic" aria-hidden="true">✅</div><h1>Pagamento confirmado!</h1><p class="sub">Seu pedido já entrou na fila de produção. Você recebe as atualizações no WhatsApp.</p><p class="nota">Pedido ' + esc(nsu) + '</p><p><a class="btn sec" href="/">Fazer outro pedido</a></p>';
+    }
+    (function checar(){
+      if (parar) return;
+      tent++;
+      post({ acao: 'confirmar', order_nsu: nsu, txid: txid || '' }).then(function(c){ if (c && c.pago) pago(); }).catch(function(){})
+        .then(function(){ if (!parar && tent < 360) setTimeout(checar, tent < 60 ? 5000 : 15000); });
+    })();
+  }
+
+  /* ── volta do pagamento ── */
+  var qs = new URLSearchParams(location.search);
+  if (qs.get('pedido')) { voltaPagamento(qs); return; }
+
+  /* ── tipo / entrega ── */
+  function grupo(id, attr, cb){
+    $(id).addEventListener('click', function(e){
+      var b = e.target.closest('button'); if (!b) return;
+      $(id).querySelectorAll('button').forEach(function(x){ var on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-checked', on ? 'true' : 'false'); });
+      cb(b.getAttribute(attr));
+    });
+  }
+  grupo('tipo', 'data-t', function(t){ S.tipo = t; desenharLista(); cotar(); });
+  grupo('pagto', 'data-p', function(p){ S.pagto = p; $('btnPagar').textContent = rotuloPagar(); $('boxCartao').classList.toggle('hidden', p !== 'cartao'); if (p === 'cartao') preencherTitular(); });
+  function rotuloPagar(){ return S.pagto === 'cartao' ? 'Pagar com cartão' : 'Pagar com Pix'; }
+  grupo('entrega', 'data-e', function(e){ S.entrega = e; $('boxEnvio').classList.toggle('hidden', e !== 'envio'); calcularFrete(); resumo(); });
+
+  /* ── leitura do PNG (cabeçalho) ── */
+  function lerCabecalho(file){
+    return file.slice(0, 65536).arrayBuffer().then(function(buf){
+      var v = new DataView(buf), sig = [137,80,78,71,13,10,26,10];
+      for (var i = 0; i < 8; i++) if (v.getUint8(i) !== sig[i]) throw new Error('nao-png');
+      var w = v.getUint32(16), h = v.getUint32(20), dpi = null, off = 8;
+      while (off < v.byteLength - 12) {
+        var len = v.getUint32(off), tp = String.fromCharCode(v.getUint8(off+4), v.getUint8(off+5), v.getUint8(off+6), v.getUint8(off+7));
+        if (tp === 'pHYs') { if (v.getUint8(off + 16) === 1) dpi = Math.round(v.getUint32(off + 8) * 0.0254); break; }
+        if (tp === 'IDAT' || tp === 'IEND') break;
+        off += 12 + len;
+      }
+      return { w: w, h: h, dpi: dpi };
+    });
+  }
+  function medidas(a){
+    var dpi = a.dpi > 0 ? a.dpi : 96, max = MAXL[S.tipo];
+    var w = a.w / dpi * 2.54, h = a.h / dpi * 2.54;
+    if (w > max + 0.1 && h <= max + 0.1) { var t = w; w = h; h = t; }
+    return { w: w, h: h, excede: w > max + 0.1 };
+  }
+  function miniatura(a){
+    if (a.file.size > 30 * 1048576 || !window.createImageBitmap) return Promise.resolve(null);
+    return createImageBitmap(a.file, { resizeWidth: 220, resizeQuality: 'low' }).then(function(bmp){
+      var c = document.createElement('canvas'); c.width = bmp.width; c.height = bmp.height;
+      c.getContext('2d').drawImage(bmp, 0, 0); try { bmp.close(); } catch(e) {}
+      return new Promise(function(ok){ c.toBlob(function(b){ c.width = c.height = 1; ok(b); }, 'image/png'); });
+    }).catch(function(){ return null; });
+  }
+  function caminho(nome){ return Date.now() + '_' + Math.random().toString(36).substr(2, 5) + '_' + nome.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-zA-Z0-9._-]/g, '_'); }
+  function subir(blob, path, prog){
+    return new Promise(function(ok, falha){
+      var x = new XMLHttpRequest();
+      x.open('POST', SUPA + '/storage/v1/object/' + BUCKET + '/' + encodeURIComponent(path));
+      x.setRequestHeader('apikey', KEY); x.setRequestHeader('Authorization', 'Bearer ' + KEY); x.setRequestHeader('Content-Type', 'image/png');
+      if (prog) x.upload.onprogress = function(e){ if (e.lengthComputable) prog(e.loaded / e.total); };
+      x.onload = function(){ x.status >= 200 && x.status < 300 ? ok(SUPA + '/storage/v1/object/public/' + BUCKET + '/' + encodeURIComponent(path)) : falha(new Error('HTTP ' + x.status)); };
+      x.onerror = function(){ falha(new Error('rede')); };
+      x.send(blob);
+    });
+  }
+
+  /* ── arquivos ── */
+  var fila = [], subindo = 0;
+  function adicionar(files){
+    $('msg').textContent = '';
+    [].slice.call(files).forEach(function(file){
+      if (S.arqs.length >= 30) return;
+      var a = { id: ++S.seq, file: file, nome: file.name, qtd: 1, estado: 'lendo', prog: 0 };
+      if (!/\.png$/i.test(file.name) || (file.type && file.type !== 'image/png')) { manualAdicionar([file]); abrirManual(true); return; }
+      S.arqs.push(a);
+      lerCabecalho(file).then(function(c){
+        a.w = c.w; a.h = c.h; a.dpi = c.dpi; a.estado = 'fila';
+        miniatura(a).then(function(b){ if (b) { a.thumbBlob = b; a.thumbLocal = URL.createObjectURL(b); desenharLista(); } });
+        fila.push(a); desenharLista(); proximo();
+      }).catch(function(){ a.estado = 'erro'; a.erro = 'Arquivo não é um PNG válido'; desenharLista(); });
+    });
+    desenharLista();
+  }
+  function proximo(){
+    while (subindo < 2 && fila.length) {
+      var a = fila.shift(); if (a.removido) continue;
+      subindo++; a.estado = 'subindo'; desenharLista();
+      (function(a){
+        var p = caminho(a.nome);
+        subir(a.file, p, function(f){ a.prog = f; var el = document.querySelector('[data-id="' + a.id + '"] .bar i'); if (el) el.style.width = Math.round(f * 100) + '%'; })
+          .then(function(url){
+            a.url = url;
+            if (!a.thumbBlob) return;
+            return subir(a.thumbBlob, p + '_thumb.png').then(function(t){ a.thumb = t; }).catch(function(){});
+          })
+          .then(function(){ if (a.url) { a.estado = 'ok'; } })
+          .catch(function(){ a.estado = 'erro'; a.erro = 'Falhou o envio. Remova e tente de novo.'; })
+          .then(function(){ subindo--; desenharLista(); cotar(); proximo(); });
+      })(a);
+    }
+  }
+  function desenharLista(){
+    var html = S.arqs.map(function(a){
+      var med = a.w ? medidas(a) : null, st = '', cls = '';
+      if (a.estado === 'erro') { st = a.erro; cls = 'err'; }
+      else if (med && med.excede) { st = 'Largura acima de ' + MAXL[S.tipo] + ' cm para ' + NOME[S.tipo] + ' — ajuste o arquivo'; cls = 'err'; }
+      else if (a.estado === 'subindo' || a.estado === 'fila') { st = a.estado === 'fila' ? 'Aguardando envio…' : 'Enviando…'; }
+      else if (a.estado === 'lendo') st = 'Lendo arquivo…';
+      else if (a.estado === 'ok') {
+        if (a.h === 30000 || a.w === 30000) { st = 'O arquivo tem exatamente 30.000 px, o limite do CorelDRAW: ele pode ter sido reduzido na exportação. Confira se a medida é a que você quer.'; cls = 'warn'; }
+        else if (!a.dpi) { st = 'Arquivo sem DPI: medimos a 96 DPI — confira a medida'; cls = 'warn'; }
+        else if (a.dpi < 300) { st = 'Resolução de ' + a.dpi + ' DPI (ideal 300) — pode sair com menos nitidez'; cls = 'warn'; }
+        else { st = 'Enviado ✓ · ' + a.dpi + ' DPI'; cls = 'ok'; }
+      }
+      var item = S.cot && S.cot.ok && S.cot.itens ? S.cot.itens.filter(function(i){ return i.url === a.url; })[0] : null;
+      return '<div class="f" data-id="' + a.id + '"><div class="th">' + (a.thumbLocal ? '<img alt="" src="' + a.thumbLocal + '">' : '<span aria-hidden="true">🖼️</span>') + '</div>'
+        + '<div style="min-width:0"><div class="nm" title="' + esc(a.nome) + '">' + esc(a.nome) + '</div>'
+        + (med ? '<div class="md">' + cm(med.w) + ' × ' + cm(med.h) + ' cm' + (a.qtd > 1 ? ' · ' + a.qtd + ' cópias = ' + cm(med.h * a.qtd) + ' cm' : '') + '</div>' : '')
+        + '<div class="st ' + cls + '">' + esc(st) + (a.naoPng ? ' <a href="https://wa.me/5527992830118?text=' + encodeURIComponent('Oi! Tenho um arquivo ' + (a.nome.split('.').pop() || '').toUpperCase() + ' para imprimir em DTF. Pode me ajudar?') + '" target="_blank" rel="noopener">Mande pelo WhatsApp</a>' : '') + '</div>'
+        + (a.estado === 'subindo' ? '<div class="bar"><i style="width:' + Math.round(a.prog * 100) + '%"></i></div>' : '') + '</div>'
+        + '<div class="rt">' + (item ? '<span class="val">' + brl(item.valor) + '</span>' : '')
+        + (a.estado !== 'erro' ? '<div class="qtd"><button type="button" data-q="-1" aria-label="Menos cópias">−</button><span aria-label="Cópias">' + a.qtd + '</span><button type="button" data-q="1" aria-label="Mais cópias">+</button></div>' : '')
+        + '<button type="button" class="rm" data-rm>Remover</button></div></div>';
+    }).join('');
+    $('lista').innerHTML = html;
+    resumo();
+  }
+  $('lista').addEventListener('click', function(e){
+    var f = e.target.closest('.f'); if (!f) return;
+    var a = S.arqs.filter(function(x){ return x.id === Number(f.getAttribute('data-id')); })[0]; if (!a) return;
+    if (e.target.closest('[data-rm]')) { a.removido = true; S.arqs = S.arqs.filter(function(x){ return x !== a; }); desenharLista(); cotar(); return; }
+    var q = e.target.closest('[data-q]'); if (q) { a.qtd = Math.max(1, Math.min(99, a.qtd + Number(q.getAttribute('data-q')))); desenharLista(); cotar(); }
+  });
+  $('arq').addEventListener('change', function(e){ adicionar(e.target.files); e.target.value = ''; });
+  var dz = $('drop');
+  ['dragenter', 'dragover'].forEach(function(t){ dz.addEventListener(t, function(e){ e.preventDefault(); dz.classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function(t){ dz.addEventListener(t, function(){ dz.classList.remove('over'); }); });
+  dz.addEventListener('drop', function(e){ e.preventDefault(); adicionar(e.dataTransfer.files); });
+
+  /* ── cotação no servidor (valor oficial) ── */
+  var tCot = null, nCot = 0;
+  function prontos(){ return S.arqs.filter(function(a){ return a.estado === 'ok' && a.url; }); }
+  function cotar(){
+    clearTimeout(tCot);
+    tCot = setTimeout(function(){
+      var p = prontos(), n = ++nCot;
+      if (!p.length) { S.cot = null; resumo(); return; }
+      S.cot = { carregando: true }; resumo();
+      post({ acao: 'cotar', tipo: S.tipo, arquivos: p.map(function(a){ return { url: a.url, nome: a.nome, qtd: a.qtd, tamanho: a.file.size, thumb: a.thumb }; }) })
+        .then(function(j){ if (n !== nCot) return; S.cot = j; desenharLista(); calcularFrete();
+          if (j && j.ok && !S.evCarrinho) { S.evCarrinho = true; evento('AddToCart', { value: j.total, currency: 'BRL', content_name: j.nome }); setTimeout(function(){ if (window.VxRaspadinha) VxRaspadinha.talvez(); }, 1800); } })
+        .catch(function(){ if (n !== nCot) return; S.cot = { ok: false, mensagem: 'Não consegui calcular agora. Tente de novo.' }; resumo(); });
+    }, 350);
+  }
+
+  /* ── frete ── */
+  var tFr = null;
+  $('cep').addEventListener('input', function(){
+    var c = dig(this.value); this.value = c.length > 5 ? c.slice(0, 5) + '-' + c.slice(5, 8) : c;
+    if (c.length === 8) {
+      fetch('https://viacep.com.br/ws/' + c + '/json/').then(function(r){ return r.json(); }).then(function(j){
+        if (j && !j.erro) { if (!$('rua').value) $('rua').value = j.logradouro || ''; if (!$('bairro').value) $('bairro').value = j.bairro || ''; $('cidade').value = j.localidade || ''; $('uf').value = j.uf || ''; }
+      }).catch(function(){});
+    }
+    clearTimeout(tFr); tFr = setTimeout(calcularFrete, 400);
+  });
+  function calcularFrete(){
+    if (S.entrega !== 'envio') { S.frete = null; resumo(); return; }
+    var c = dig($('cep').value);
+    if (c.length !== 8 || !S.cot || !S.cot.ok) { S.frete = null; $('freteTxt').textContent = c.length === 8 ? 'O frete é calculado depois que o arquivo for enviado.' : ''; resumo(); return; }
+    var chave = c + '|' + S.cot.metros;
+    if (S.freteCep === chave && S.frete) { resumo(); return; }
+    S.freteCep = chave; S.frete = { carregando: true }; $('freteTxt').textContent = 'Calculando frete…'; resumo();
+    post({ acao: 'frete', cep: c, metros: S.cot.metros, valor: S.cot.total }).then(function(f){
+      if (S.freteCep !== chave) return;
+      S.frete = f && f.ok ? f : { erro: true, mensagem: (f && f.mensagem) || 'Não consegui cotar o frete.' };
+      $('freteTxt').textContent = f && f.ok ? f.texto + (f.gratis ? '' : ' A produção leva até 24h úteis antes da postagem.') : S.frete.mensagem; resumo();
+    }).catch(function(){ S.frete = { erro: true }; $('freteTxt').textContent = 'Não consegui cotar o frete.'; resumo(); });
+  }
+
+  /* ── resumo + botão ── */
+  function resumo(){
+    var r = $('resumo'), c = S.cot, enviando = S.arqs.some(function(a){ return a.estado === 'subindo' || a.estado === 'fila' || a.estado === 'lendo'; });
+    var temErro = S.arqs.some(function(a){ return a.estado === 'erro'; });
+    var total = 0, pode = false, sub = 'Total';
+    if (!c) r.innerHTML = '<div class="nota">' + (enviando ? 'Enviando seus arquivos…' : 'Envie pelo menos um arquivo PNG para ver o valor.') + '</div>';
+    else if (c.carregando) r.innerHTML = '<div class="nota">Calculando o valor…</div>';
+    else if (!c.ok) r.innerHTML = '<div class="alerta">' + esc(c.mensagem || 'Não consegui calcular.') + '</div>';
+    else {
+      var fr = S.entrega === 'envio' ? S.frete : null, vf = fr && fr.ok ? Number(fr.valor) || 0 : 0;
+      var cp = cupomAtivo(), desc = cp ? Math.round(c.total * cp.pct) / 100 : 0;
+      total = Math.round((c.total - desc + vf) * 100) / 100;
+      r.innerHTML = '<div class="l"><span>' + esc(c.nome) + ' · ' + c.itens.length + ' arquivo(s)</span><b>' + cm(c.metros * 100) + ' cm (' + String(c.metros.toFixed(2)).replace('.', ',') + ' m)</b></div>'
+        + '<div class="l"><span>Faixa de preço</span><b>' + esc(c.faixa) + '</b></div>'
+        + '<div class="l"><span>Impressão</span><b>' + brl(c.total) + '</b></div>'
+        + (cp ? '<div class="l" style="color:var(--ok)"><span>🎟️ Cupom ' + esc(cp.codigo) + ' (' + cp.pct + '% 1ª compra)</span><b>−' + brl(desc) + '</b></div>' : '')
+        + (S.cupomTelDif ? '<div class="nota">Seu cupom está ligado a outro WhatsApp. Use o mesmo número do cupom para ganhar o desconto.</div>' : '')
+        + (c.piso_aplicado ? '<div class="nota">Valor mínimo do pedido aplicado.</div>' : '')
+        + (S.entrega === 'envio' ? '<div class="l"><span>Frete</span><b>' + (fr && fr.ok ? (fr.gratis ? 'Grátis' : brl(fr.valor)) : fr && fr.carregando ? 'calculando…' : 'informe o CEP') + '</b></div>' : '<div class="l"><span>Entrega</span><b>Retirada na loja</b></div>')
+        + '<div class="tot"><span>Total</span><b>' + brl(total) + '</b></div>'
+        + (enviando ? '<div class="nota">Ainda enviando arquivos — o valor atualiza quando terminar.</div>' : '')
+        + (temErro ? '<div class="alerta w">Há arquivo com problema na lista. Remova-o para continuar.</div>' : '');
+      pode = !enviando && !temErro && (S.entrega !== 'envio' || (fr && fr.ok));
+    }
+    $('barTot').textContent = brl(total);
+    $('barSub').textContent = c && c.ok ? c.metros.toFixed(2).replace('.', ',') + ' m · ' + (S.entrega === 'envio' ? 'com frete' : 'retirada') : sub;
+    $('btnPagar').disabled = !pode;
+  }
+
+  /* ── pagar ── */
+  $('btnPagar').addEventListener('click', function(){
+    var b = this, m = $('msg'); m.textContent = '';
+    var nome = $('nome').value.trim(), tel = dig($('tel').value);
+    if (nome.length < 3) { m.textContent = 'Informe seu nome completo.'; $('nome').focus(); return; }
+    if (tel.length < 10) { m.textContent = 'Informe seu WhatsApp com DDD.'; $('tel').focus(); return; }
+    var env = null;
+    if (S.entrega === 'envio') {
+      env = { cep: dig($('cep').value), endereco: $('rua').value.trim(), logradouro: $('rua').value.trim(), numero: $('numero').value.trim(), complemento: $('compl').value.trim(), bairro: $('bairro').value.trim(), cidade: $('cidade').value.trim(), uf: $('uf').value.trim().toUpperCase() };
+      if (env.cep.length !== 8 || !env.endereco || !env.numero || !env.cidade) { m.textContent = 'Preencha o endereço de entrega completo.'; return; }
+    }
+    var cc = null;
+    if (S.pagto === 'cartao') { cc = dadosCartao(); if (cc.erro) { erroCartao(cc.erro); return; } erroCartao(''); }
+    b.disabled = true; b.textContent = S.pagto === 'cartao' ? 'Processando o cartão…' : 'Gerando o Pix…';
+    if (S.pagto === 'cartao' && S.nsuCartao) {   // nova tentativa no mesmo pedido
+      post({ acao: 'cartao_site', order_nsu: S.nsuCartao, cartao: cc.cartao, titular: cc.titular }).then(function(j){
+        if (j && j.pago) { cartaoAprovado(S.nsuCartao, j.total); return; }
+        erroCartao((j && j.mensagem) || 'Cartão não aprovado.'); b.disabled = false; b.textContent = rotuloPagar();
+      }).catch(function(){ erroCartao('Sem conexão. Tente de novo.'); b.disabled = false; b.textContent = rotuloPagar(); });
+      return;
+    }
+    evento('InitiateCheckout', { value: S.cot && S.cot.ok ? S.cot.total : 0, currency: 'BRL' });
+    post({ acao: 'criar', cupom: (cupomAtivo() || {}).codigo || null, pagamento: S.pagto === 'cartao' ? 'cartao_site' : 'pix', cartao: cc && cc.cartao, titular: cc && cc.titular, nome: nome, telefone: tel, tipo: S.tipo, entrega: S.entrega, dados_envio: env, obs: $('obs').value,
+      arquivos: prontos().map(function(a){ return { url: a.url, nome: a.nome, qtd: a.qtd, tamanho: a.file.size, thumb: a.thumb }; }) })
+      .then(function(j){
+        if (j && j.ok) { try { localStorage.setItem('vx_pedido_online', j.order_nsu); } catch(e) {}
+          if (j.pagamento === 'pix' && j.brcode) { mostrarPagamento(j); return; }
+          if (j.pagamento === 'cartao_site' && j.pago) { cartaoAprovado(j.order_nsu, j.total); return; }
+          if (j.url) { evento('AddPaymentInfo', { payment_type: 'cartao' }); location.href = j.url; return; } }
+        if (j && j.pagamento === 'cartao_site' && j.order_nsu) { S.nsuCartao = j.order_nsu; erroCartao(j.mensagem || 'Cartão não aprovado.'); b.disabled = false; b.textContent = rotuloPagar(); return; }
+        m.textContent = (j && j.mensagem) || 'Não consegui gerar o pagamento. Tente de novo.'; b.disabled = false; b.textContent = rotuloPagar();
+      })
+      .catch(function(){ m.textContent = 'Sem conexão. Tente de novo.'; b.disabled = false; b.textContent = rotuloPagar(); });
+  });
+
+  /* ── orçamento manual: arquivo que não é PNG (CDR, PDF, PSD, link do Canva…) ── */
+  var M = { arqs: [] };
+  function origemCod(){ var o = {}; try { o = JSON.parse(localStorage.getItem('vx_origem') || '{}') || {}; } catch (e) {} return [o.utm_source || 'site', o.utm_campaign].filter(Boolean).join('-').toUpperCase().slice(0, 40); }
+  function linksZap(){ document.querySelectorAll('[data-zapmsg]').forEach(function(a){ a.href = 'https://wa.me/5527992830118?text=' + encodeURIComponent(a.getAttribute('data-zapmsg') + ' [' + origemCod() + ']'); }); }
+  linksZap();
+  function abrirManual(rolar){
+    var c = $('cardManual'); c.classList.remove('hidden');
+    if (!$('nomeManual').value && $('nome').value) $('nomeManual').value = $('nome').value;
+    if (!$('telManual').value && $('tel').value) $('telManual').value = $('tel').value;
+    if (rolar) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function manualAdicionar(files){
+    [].slice.call(files).forEach(function(f){ if (M.arqs.length < 10) M.arqs.push({ file: f, nome: f.name, estado: 'novo' }); });
+    manualLista();
+  }
+  function tamanho(b){ return b > 1048576 ? (b / 1048576).toFixed(1).replace('.', ',') + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB'; }
+  function manualLista(){
+    $('listaManual').innerHTML = M.arqs.map(function(a, i){
+      var st = a.estado === 'subindo' ? 'Enviando… ' + Math.round((a.prog || 0) * 100) + '%' : a.estado === 'ok' ? 'Enviado ✓' : a.estado === 'erro' ? 'Falhou o envio — tente de novo' : 'Pronto para enviar';
+      var ext = (a.nome.split('.').pop() || '').toUpperCase();
+      return '<div class="f"><div class="th"><b style="font-size:12px">' + esc(ext.slice(0, 4)) + '</b></div><div style="min-width:0"><div class="nm">' + esc(a.nome) + '</div><div class="md">' + tamanho(a.file.size) + '</div><div class="st ' + (a.estado === 'ok' ? 'ok' : a.estado === 'erro' ? 'err' : '') + '">' + st + '</div></div>'
+        + '<div class="rt">' + (a.estado !== 'subindo' && a.estado !== 'ok' ? '<button type="button" class="rm" data-rmm="' + i + '">Remover</button>' : '') + '</div></div>';
+    }).join('');
+  }
+  $('listaManual').addEventListener('click', function(e){ var b = e.target.closest('[data-rmm]'); if (!b) return; M.arqs.splice(Number(b.getAttribute('data-rmm')), 1); manualLista(); });
+  $('abrirManual').addEventListener('click', function(){ abrirManual(true); });
+  $('arqManual').addEventListener('change', function(e){ manualAdicionar(e.target.files); e.target.value = ''; });
+  (function(){ var dz = $('dropManual');
+    ['dragenter', 'dragover'].forEach(function(t){ dz.addEventListener(t, function(e){ e.preventDefault(); dz.classList.add('over'); }); });
+    ['dragleave', 'drop'].forEach(function(t){ dz.addEventListener(t, function(){ dz.classList.remove('over'); }); });
+    dz.addEventListener('drop', function(e){ e.preventDefault(); manualAdicionar(e.dataTransfer.files); }); })();
+  $('telManual').addEventListener('input', function(){ var d = dig(this.value).slice(0, 11); this.value = d.length > 6 ? '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4) : d.length > 2 ? '(' + d.slice(0, 2) + ') ' + d.slice(2) : d; });
+  function subirQualquer(file, path, prog){
+    return new Promise(function(ok, falha){
+      var x = new XMLHttpRequest();
+      x.open('POST', SUPA + '/storage/v1/object/' + BUCKET + '/' + encodeURIComponent(path).replace(/%2F/g, '/'));
+      x.setRequestHeader('apikey', KEY); x.setRequestHeader('Authorization', 'Bearer ' + KEY); x.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
+      x.upload.onprogress = function(e){ if (e.lengthComputable) prog(e.loaded / e.total); };
+      x.onload = function(){ x.status >= 200 && x.status < 300 ? ok(SUPA + '/storage/v1/object/public/' + BUCKET + '/' + encodeURIComponent(path).replace(/%2F/g, '/')) : falha(new Error('HTTP ' + x.status)); };
+      x.onerror = function(){ falha(new Error('rede')); };
+      x.send(file);
+    });
+  }
+  $('enviarManual').addEventListener('click', function(){
+    var b = this, m = $('msgManual'); m.textContent = '';
+    var nome = $('nomeManual').value.trim(), tel = dig($('telManual').value), link = $('linkManual').value.trim();
+    if (!M.arqs.length && !/^https?:\/\//i.test(link)) { m.textContent = 'Envie o arquivo ou cole o link do Canva/Drive.'; return; }
+    if (nome.length < 3) { m.textContent = 'Informe seu nome.'; $('nomeManual').focus(); return; }
+    if (tel.length < 10) { m.textContent = 'Informe seu WhatsApp com DDD.'; $('telManual').focus(); return; }
+    b.disabled = true; b.textContent = 'Enviando…';
+    var pend = M.arqs.filter(function(a){ return a.estado !== 'ok'; });
+    var seq = Promise.resolve();
+    pend.forEach(function(a){
+      seq = seq.then(function(){
+        a.estado = 'subindo'; a.prog = 0; manualLista();
+        var path = 'orcamento-manual/' + caminho(a.nome);
+        function tentar(n){ return subirQualquer(a.file, path, function(f){ a.prog = f; manualLista(); }).catch(function(e){ if (n >= 3) throw e; return new Promise(function(ok){ setTimeout(ok, 1500 * n); }).then(function(){ return tentar(n + 1); }); }); }
+        return tentar(1).then(function(url){ a.url = url; a.estado = 'ok'; manualLista(); }).catch(function(){ a.estado = 'erro'; manualLista(); throw new Error('upload'); });
+      });
+    });
+    seq.then(function(){
+      return post({ acao: 'manual', nome: nome, telefone: tel, tipo: S.tipo, link: link, obs: $('obsManual').value,
+        arquivos: M.arqs.map(function(a){ return { url: a.url, nome: a.nome, tamanho: a.file.size }; }) });
+    }).then(function(j){
+      if (!j || !j.ok) { m.textContent = (j && j.mensagem) || 'Não consegui enviar agora. Chame no WhatsApp.'; b.disabled = false; b.textContent = 'Enviar para orçamento'; return; }
+      try { if (window.fbq) fbq('track', 'Lead', { content_name: 'orcamento-manual' }); if (window.gtag) gtag('event', 'generate_lead', { method: 'orcamento-manual' }); } catch (e) {}
+      $('cardManual').querySelector('.stack').innerHTML = '<div class="ok-manual"><b>Recebemos seu arquivo!</b><br>Nossa equipe já foi avisada e vai te mandar o orçamento no WhatsApp <b>' + esc($('telManual').value) + '</b> em instantes. Você também recebeu uma confirmação por lá.</div>'
+        + '<div class="acoes-manual"><a class="btn zapbtn" href="https://wa.me/5527992830118?text=' + encodeURIComponent('Oi! Acabei de enviar meu arquivo pelo site para orçamento. Meu nome é ' + nome + '.') + '" target="_blank" rel="noopener">Abrir o WhatsApp</a></div>';
+    }).catch(function(){ m.textContent = 'Algum arquivo não subiu. Confira a internet e toque em enviar de novo, ou chame no WhatsApp.'; b.disabled = false; b.textContent = 'Enviar para orçamento'; });
+  });
+
+  /* ── cartão dentro do site (Asaas) ── */
+  function preencherTitular(){
+    if (!$('ccNome').value && $('nome').value) $('ccNome').value = $('nome').value.toUpperCase();
+    if (!$('ccCep').value && $('cep').value) $('ccCep').value = $('cep').value;
+    if (!$('ccNumEnd').value && $('numero').value) $('ccNumEnd').value = $('numero').value;
+  }
+  function luhn(n){ var s = 0, d = false; for (var i = n.length - 1; i >= 0; i--) { var x = +n[i]; if (d) { x *= 2; if (x > 9) x -= 9; } s += x; d = !d; } return n.length >= 13 && s % 10 === 0; }
+  $('ccNum').addEventListener('input', function(){ this.value = dig(this.value).slice(0, 19).replace(/(\d{4})(?=\d)/g, '$1 '); });
+  $('ccVal').addEventListener('input', function(){ var d = dig(this.value).slice(0, 4); this.value = d.length > 2 ? d.slice(0, 2) + '/' + d.slice(2) : d; });
+  $('ccCvv').addEventListener('input', function(){ this.value = dig(this.value).slice(0, 4); });
+  $('ccCep').addEventListener('input', function(){ var c = dig(this.value).slice(0, 8); this.value = c.length > 5 ? c.slice(0, 5) + '-' + c.slice(5) : c; });
+  $('ccDoc').addEventListener('input', function(){ var d = dig(this.value).slice(0, 14);
+    this.value = d.length <= 11 ? d.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2') : d.replace(/^(\d{2})(\d)/, '$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d)/, '.$1/$2').replace(/(\d{4})(\d)/, '$1-$2'); });
+  function dadosCartao(){
+    var num = dig($('ccNum').value), val = dig($('ccVal').value), doc = dig($('ccDoc').value);
+    var e = '';
+    if (!luhn(num)) e = 'Confira o número do cartão.';
+    else if ($('ccNome').value.trim().length < 3) e = 'Informe o nome impresso no cartão.';
+    else if (val.length !== 4 || +val.slice(0, 2) < 1 || +val.slice(0, 2) > 12) e = 'Confira a validade (MM/AA).';
+    else if (dig($('ccCvv').value).length < 3) e = 'Confira o CVV (3 ou 4 números no verso).';
+    else if (doc.length !== 11 && doc.length !== 14) e = 'Informe o CPF ou CNPJ do titular.';
+    else if (!/^\S+@\S+\.\S+$/.test($('ccEmail').value.trim())) e = 'Informe um e-mail válido.';
+    else if (dig($('ccCep').value).length !== 8 || !$('ccNumEnd').value.trim()) e = 'Informe o CEP e o número do endereço do titular.';
+    if (e) return { erro: e };
+    return { cartao: { numero: num, nome: $('ccNome').value.trim(), mes: val.slice(0, 2), ano: val.slice(2), cvv: dig($('ccCvv').value) },
+      titular: { nome: $('ccNome').value.trim(), cpfCnpj: doc, email: $('ccEmail').value.trim(), cep: dig($('ccCep').value), numero: $('ccNumEnd').value.trim() } };
+  }
+  function erroCartao(t){ var a = $('ccErro'); a.textContent = t; a.classList.toggle('hidden', !t); if (t) a.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+  function cartaoAprovado(nsu, total){
+    try { localStorage.removeItem('vx_pedido_online'); } catch (e) {}
+    $('ccNum').value = ''; $('ccCvv').value = '';
+    evento('Purchase', { value: total, currency: 'BRL' }, { eventID: 'orc_' + nsu });
+    $('tela-pedido').classList.add('hidden'); $('barra').classList.add('hidden'); $('tela-pix').classList.add('hidden'); $('tela-final').classList.remove('hidden');
+    window.scrollTo(0, 0);
+    $('final').innerHTML = '<div class="ic" aria-hidden="true">✅</div><h1>Pagamento aprovado!</h1><p class="sub">Seu pedido já entrou na fila de produção. Você recebe as atualizações no WhatsApp.</p><p class="nota">Pedido ' + esc(nsu) + '</p><p><a class="btn sec" href="/">Fazer outro pedido</a></p>';
+  }
+
+  /* ── cupom da raspadinha (10% na 1ª compra) ── */
+  function cupomAtivo(){
+    var c = window.VxRaspadinha && VxRaspadinha.cupom(); S.cupomTelDif = false;
+    if (!c) return null;
+    var t = dig($('tel').value);
+    if (t.length >= 10 && t.slice(-8) !== String(c.tel || '').slice(-8)) { S.cupomTelDif = true; return null; }
+    return c;
+  }
+  function aplicarCupomNosCampos(){
+    var c = window.VxRaspadinha && VxRaspadinha.cupom(); if (!c) return;
+    if (!$('nome').value && c.nome) $('nome').value = c.nome;
+    if (!$('tel').value && c.tel) { $('tel').value = c.tel; $('tel').dispatchEvent(new Event('input')); }
+    resumo();
+  }
+  window.addEventListener('vxcupom', aplicarCupomNosCampos);
+  window.addEventListener('load', function(){
+    var c = window.VxRaspadinha && VxRaspadinha.cupom(); if (!c) return;
+    post({ acao: 'cupom_validar', codigo: c.codigo, telefone: c.tel }).then(function(v){ if (v && v.ok === false) { VxRaspadinha.limpar(); resumo(); } else aplicarCupomNosCampos(); }).catch(function(){});
+  });
+  $('tel').addEventListener('change', function(){ resumo(); });
+  $('tel').addEventListener('input', function(){ var d = dig(this.value).slice(0, 11); this.value = d.length > 6 ? '(' + d.slice(0, 2) + ') ' + d.slice(2, d.length - 4) + '-' + d.slice(-4) : d.length > 2 ? '(' + d.slice(0, 2) + ') ' + d.slice(2) : d; });
+
+  /* ── tela de retorno ── */
+  function voltaPagamento(q){
+    $('tela-pedido').classList.add('hidden'); $('barra').classList.add('hidden'); $('tela-final').classList.remove('hidden');
+    var nsu = q.get('pedido') || q.get('order_nsu'), f = $('final'), tent = 0;
+    function mostrar(ic, tit, txt, extra){ f.innerHTML = '<div class="ic" aria-hidden="true">' + ic + '</div><h1>' + tit + '</h1><p class="sub">' + txt + '</p>' + (extra || ''); }
+    mostrar('⏳', 'Conferindo seu pagamento…', 'Só um instante.');
+    function checar(){
+      tent++;
+      post({ acao: 'confirmar', order_nsu: nsu, transaction_nsu: q.get('transaction_nsu') || q.get('transaction_id') || '', slug: q.get('slug') || q.get('invoice_slug') || '', receipt_url: q.get('receipt_url') || '' })
+        .then(function(j){
+          if (j && j.pago) { try { if (!sessionStorage.getItem('vx_comprou_' + nsu)) { sessionStorage.setItem('vx_comprou_' + nsu, '1'); evento('Purchase', { currency: 'BRL', value: 0 }, { eventID: 'orc_' + nsu }); } } catch (e) {} mostrar('✅', 'Pagamento confirmado!', 'Seu pedido já entrou na fila de produção. Você recebe as atualizações no WhatsApp.', '<p class="nota">Pedido ' + esc(nsu) + '</p><p><a class="btn sec" href="/">Fazer outro pedido</a></p>'); return; }
+          if (tent < 12) { mostrar('⏳', 'Aguardando a confirmação do pagamento…', 'Se você pagou por Pix, pode levar alguns segundos.'); setTimeout(checar, 5000); return; }
+          mostrar('🕐', 'Ainda não recebemos a confirmação', 'Se você já pagou, fique tranquilo: assim que cair, seu pedido entra na fila e avisamos no WhatsApp. O link de pagamento também foi enviado para o seu WhatsApp.', '<p class="nota">Pedido ' + esc(nsu) + '</p><p><a class="btn sec" href="https://wa.me/5527992830118" target="_blank" rel="noopener">Falar com a gente</a></p>');
+        })
+        .catch(function(){ if (tent < 12) setTimeout(checar, 5000); });
+    }
+    checar();
+  }
+})();
+</script>
+<script>document.documentElement.style.setProperty('--vxr-bottom','96px');</script>
+<script src="/raspadinha.js?v=5" defer></script>
+<script>
+(function(){ var v = document.getElementById('voltar'); if (!v) return;
+  v.href = '/dtf/' + location.search.replace(/([?&])pedido=[^&]*/,'');
+  v.addEventListener('click', function(e){
+    try { if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) { e.preventDefault(); history.back(); } } catch (x) {}
+  });
+})();
+</script>
+
+</body>
+</html>
