@@ -1,5 +1,7 @@
 name: snapshot
-on: workflow_dispatch
+on:
+  push:
+    branches: [snap-laser]
 permissions:
   contents: write
 jobs:
