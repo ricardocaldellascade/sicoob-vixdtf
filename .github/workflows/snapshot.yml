@@ -87,5 +87,9 @@ jobs:
 
           echo "== 7) site no ar =="
           curl -s -o /dev/null -w "index: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/
-          curl -s -o /dev/null -w "atacado: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/atacado
+          curl -s -o /dev/null -w "atacado antigo (tem que dar 404): %{http_code}\n" https://chaveiro-vixdtf.netlify.app/atacado
+          curl -s -o /dev/null -w "site de atacado novo: %{http_code}\n" https://chaveiro-atacado-vixdtf.netlify.app/
+          echo "-- links cruzados no ar --"
+          curl -s https://chaveiro-vixdtf.netlify.app/ | grep -c "atacado" | sed 's/^/varejo cita atacado: /'
+          curl -s https://chaveiro-atacado-vixdtf.netlify.app/ | grep -c "chaveiro-vixdtf.netlify.app" | sed 's/^/atacado cita o varejo: /'
           curl -s -o /dev/null -w "fonte saturday: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/fontes/saturday-regular.woff2
