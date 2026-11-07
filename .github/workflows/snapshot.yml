@@ -70,6 +70,11 @@ jobs:
             -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
             -d "{\"acao\":\"criar\",\"produto\":\"fotogravacao\",\"plano\":\"foto_frase\",\"quantidade\":1,\"frase\":\"Teste\",\"orientacao\":\"pe\",\"fonte\":\"Saturday\",\"simbolo\":\"coracao\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"pagamento\":\"cartao_site\",\"cartao\":{\"numero\":\"4000000000000002\",\"nome\":\"RICARDO TESTE\",\"mes\":\"12\",\"ano\":\"28\",\"cvv\":\"318\"},\"titular\":{\"nome\":\"RICARDO TESTE\",\"email\":\"ricardo@vixdtf.com.br\",\"cpfCnpj\":\"32483699000184\",\"cep\":\"29062558\",\"numeroEndereco\":\"290\",\"telefone\":\"27997357891\"},\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 400 ; echo
 
+          echo "== 6b) desconto do Pix (1un so foto: itens 49,90 - 4,99 = 44,91) =="
+          curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            -d "{\"acao\":\"criar\",\"produto\":\"fotogravacao\",\"plano\":\"foto\",\"quantidade\":1,\"nome\":\"Maria Conferencia\",\"telefone\":\"27988887777\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 260 ; echo
+
           echo "== 7) site no ar =="
           curl -s -o /dev/null -w "index: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/
           curl -s -o /dev/null -w "atacado: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/atacado
