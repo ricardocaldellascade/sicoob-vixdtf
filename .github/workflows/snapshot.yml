@@ -53,16 +53,20 @@ jobs:
             -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
             -d "{\"acao\":\"confirmar\",\"order_nsu\":\"$NSU\"}" ; echo
 
-          echo "== 4) atacado 21un frente (esperado 315.00) =="
+          echo "== 4) varrer (rede de seguranca) =="
+          curl -s "$SUPA/functions/v1/pedido-chaveiro?acao=varrer&token=vixchaveiro2026" | head -c 200; echo
+
+          echo "== 5) cartao: validacao de CPF =="
           curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
             -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
-            -d "{\"acao\":\"criar\",\"produto\":\"atacado\",\"gravacao\":\"frente\",\"quantidade\":21,\"empresa\":\"Teste Ltda\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 600 ; echo
+            -d "{\"acao\":\"criar\",\"produto\":\"fotogravacao\",\"plano\":\"foto\",\"quantidade\":1,\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"pagamento\":\"cartao_site\",\"cartao\":{\"numero\":\"5162306219378829\",\"nome\":\"RICARDO TESTE\",\"mes\":\"12\",\"ano\":\"28\",\"cvv\":\"318\"},\"titular\":{\"nome\":\"RICARDO TESTE\",\"email\":\"ricardo@vixdtf.com.br\",\"cpfCnpj\":\"123\",\"cep\":\"29062558\",\"numeroEndereco\":\"290\",\"telefone\":\"27997357891\"},\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 300 ; echo
 
-          echo "== 5) atacado 20un frente+verso (protecao de faixa: esperado 375.90) =="
+          echo "== 6) cartao: tentativa real com cartao de teste (deve recusar, nao cobrar) =="
           curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
             -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
-            -d "{\"acao\":\"criar\",\"produto\":\"atacado\",\"gravacao\":\"frente_verso\",\"quantidade\":20,\"frase\":\"@vix.dtf\",\"empresa\":\"Teste Ltda\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 600 ; echo
+            -d "{\"acao\":\"criar\",\"produto\":\"fotogravacao\",\"plano\":\"foto_frase\",\"quantidade\":1,\"frase\":\"Teste\",\"orientacao\":\"pe\",\"fonte\":\"Saturday\",\"simbolo\":\"coracao\",\"nome\":\"Ricardo Teste\",\"telefone\":\"27997357891\",\"entrega\":\"retirada\",\"pagamento\":\"cartao_site\",\"cartao\":{\"numero\":\"4000000000000002\",\"nome\":\"RICARDO TESTE\",\"mes\":\"12\",\"ano\":\"28\",\"cvv\":\"318\"},\"titular\":{\"nome\":\"RICARDO TESTE\",\"email\":\"ricardo@vixdtf.com.br\",\"cpfCnpj\":\"32483699000184\",\"cep\":\"29062558\",\"numeroEndereco\":\"290\",\"telefone\":\"27997357891\"},\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 400 ; echo
 
-          echo "== 6) site no ar =="
+          echo "== 7) site no ar =="
           curl -s -o /dev/null -w "index: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/
           curl -s -o /dev/null -w "atacado: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/atacado
+          curl -s -o /dev/null -w "fonte saturday: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/fontes/saturday-regular.woff2
