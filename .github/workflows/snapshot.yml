@@ -54,7 +54,11 @@ jobs:
             -d "{\"acao\":\"confirmar\",\"order_nsu\":\"$NSU\"}" ; echo
 
           echo "== 4) varrer (rede de seguranca) =="
-          curl -s "$SUPA/functions/v1/pedido-chaveiro?acao=varrer&token=vixchaveiro2026" | head -c 200; echo
+          curl -s "$SUPA/functions/v1/pedido-chaveiro?acao=varrer&token=vixchaveiro2026" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" | head -c 200; echo
+          echo "== 4b) varrer com token errado (deve dar 403) =="
+          curl -s -o /dev/null -w "token errado: %{http_code}\n" "$SUPA/functions/v1/pedido-chaveiro?acao=varrer&token=errado" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY"
 
           echo "== 5) cartao: validacao de CPF =="
           curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
