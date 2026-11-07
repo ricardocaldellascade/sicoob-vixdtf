@@ -75,6 +75,16 @@ jobs:
             -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
             -d "{\"acao\":\"criar\",\"produto\":\"fotogravacao\",\"plano\":\"foto\",\"quantidade\":1,\"nome\":\"Maria Conferencia\",\"telefone\":\"27988887777\",\"entrega\":\"retirada\",\"arquivos\":[{\"url\":\"$URL\",\"nome\":\"t.png\"}]}" | head -c 260 ; echo
 
+          echo "== 6c) plano so frase, sem foto (esperado total 31,41) =="
+          curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            -d '{"acao":"criar","produto":"fotogravacao","plano":"frase","quantidade":1,"frase":"Para sempre","orientacao":"deitado","fonte":"Saturday","simbolo":"coracao","nome":"Joana Conferencia","telefone":"27988886666","entrega":"retirada","arquivos":[]}' | head -c 260 ; echo
+
+          echo "== 6d) plano com foto sem arquivo (tem que recusar) =="
+          curl -s -X POST "$SUPA/functions/v1/pedido-chaveiro" -H "content-type: application/json" \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            -d '{"acao":"criar","produto":"fotogravacao","plano":"foto","quantidade":1,"nome":"Joana Conferencia","telefone":"27988886666","entrega":"retirada","arquivos":[]}' | head -c 200 ; echo
+
           echo "== 7) site no ar =="
           curl -s -o /dev/null -w "index: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/
           curl -s -o /dev/null -w "atacado: %{http_code}\n" https://chaveiro-vixdtf.netlify.app/atacado
